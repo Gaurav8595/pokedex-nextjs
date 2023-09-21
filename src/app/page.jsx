@@ -7,19 +7,26 @@ export default function Page() {
   const [pageno, setPageno] = useState(1);
   const handlePrev = () => {
     if (pageno > 1) {
-      const newPageNo = pageno - 1; // Calculate the new page number
-      setPageno(newPageNo); // Update the page number first
-      fetchPokemonData(newPageNo); // Then fetch data for the new page
+      const newPageNo = pageno - 1;
+      setPageno(newPageNo);
+
+      // Scroll to the top of the page
+      window.scrollTo({ top: 0, behavior: "smooth" });
+
+      fetchPokemonData(newPageNo);
     }
   };
   const handleNext = () => {
     const totalPages = Math.ceil(1000 / 20);
     if (pageno < totalPages) {
       setPageno(pageno + 1);
+
+      // Scroll to the top of the page
+      window.scrollTo({ top: 0, behavior: "smooth" });
+
       fetchPokemonData(pageno + 1);
     }
   };
-
   const fetchPokemonData = async (page) => {
     const limit = 20;
     const offset = (page - 1) * limit;
