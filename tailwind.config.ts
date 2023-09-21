@@ -38,6 +38,9 @@ const config: Config = {
         steel: "#B7B7CE",
         fairy: "#D685AD",
       },
+      fontFamily: {
+        great: ['Fredericka the Great', 'cursive'],
+      },
     },
   },
   plugins: [],
